@@ -43,7 +43,7 @@ var Service = function(options) {
 
 util.inherits(Service, EventEmitter);
 
-Service.dependencies = ['insight-api'];
+Service.dependencies = ['insight-api-polis'];
 
 /**
  * This method will read `key` and `cert` files from disk based on `httpsOptions` and
@@ -81,23 +81,15 @@ Service.prototype._getConfiguration = function() {
   var providerOptions = {
     provider: 'insight',
     url: (self.node.https ? 'https://' : 'http://') + 'localhost:' + self.node.port,
-    apiPrefix: '/insight-api'
+    apiPrefix: '/api'
   };
 
   // A bitcore-node is either livenet or testnet, so we'll pass
   // the configuration options to communicate via the local running
   // instance of the insight-api service.
-  if (self.node.network === Networks.livenet) {
-    baseConfig.blockchainExplorerOpts = {
+baseConfig.blockchainExplorerOpts = {
       livenet: providerOptions
-    };
-  } else if (self.node.network === Networks.testnet) {
-    baseConfig.blockchainExplorerOpts = {
-      testnet: providerOptions
-    };
-  } else {
-    throw new Error('Unknown network');
-  }
+    }; 
 
   return baseConfig;
 
