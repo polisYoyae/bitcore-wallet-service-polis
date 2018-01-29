@@ -41,12 +41,12 @@ var config = {
     btc: {
       livenet: {
         provider: 'insight',
-        url: 'https://insight.polisevo.org:443',
+        url: 'https://insight.polispay.org:443',
         apiPrefix:'/insight-api-polis'
       },
       testnet: {
         provider: 'insight',
-        url: 'https://testnet-insight.polisevo.org:443',
+        url: 'https://testnet-insight.polispay.org:443',
         apiPrefix:'/insight-api-polis'
         // url: 'http://localhost:3001',
         // Multiple servers (in priority order)

@@ -2,8 +2,8 @@
 # bitcore-wallet-service-polis
 
 [![NPM Package](https://img.shields.io/npm/v/bitcore-wallet-service-polis.svg?style=flat-square)](https://www.npmjs.org/package/bitcore-wallet-service-polis)
-[![Build Status](https://img.shields.io/travis/polisevo/bitcore-wallet-service-polis.svg?branch=master&style=flat-square)](https://travis-ci.org/polisevo/bitcore-wallet-service-polis)
-[![Coverage Status](https://coveralls.io/repos/polisevo/bitcore-wallet-service-polis/badge.svg?branch=master)](https://coveralls.io/r/polisevo/bitcore-wallet-service-polis?branch=master)
+[![Build Status](https://img.shields.io/travis/polispay/bitcore-wallet-service-polis.svg?branch=master&style=flat-square)](https://travis-ci.org/polispay/bitcore-wallet-service-polis)
+[![Coverage Status](https://coveralls.io/repos/polispay/bitcore-wallet-service-polis/badge.svg?branch=master)](https://coveralls.io/r/polispay/bitcore-wallet-service-polis?branch=master)
 
 A Multisig HD Bitcore Wallet Service.
 
@@ -21,7 +21,7 @@ More about BWS at https://blog.bitpay.com/announcing-the-bitcore-wallet-suite/
 
 # Getting Started
 ```
- git clone https://github.com/polisevo/bitcore-wallet-service-polis.git
+ git clone https://github.com/polispay/bitcore-wallet-service-polis.git
  cd bitcore-wallet-service-polis && npm start
 ```
 
