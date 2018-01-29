@@ -42,12 +42,12 @@ var config = {
       livenet: {
         provider: 'insight',
         url: 'https://insight.polispay.org:443',
-        apiPrefix:'/insight-api-polis'
+        apiPrefix:'/api'
       },
       testnet: {
         provider: 'insight',
         url: 'https://testnet-insight.polispay.org:443',
-        apiPrefix:'/insight-api-polis'
+        apiPrefix:'/api'
         // url: 'http://localhost:3001',
         // Multiple servers (in priority order)
         // url: ['http://a.b.c', 'https://test-insight.bitpay.com:443'],
