@@ -7,7 +7,7 @@ var https = require('https');
 var http = require('http');
 var async = require('async');
 var path = require('path');
-var bitcore = require('bitcore-lib-polis');
+var bitcore = require('bitcore-lib-dash');
 var Networks = bitcore.Networks;
 var Locker = require('locker-server');
 var BlockchainMonitor = require('../lib/blockchainmonitor');
@@ -43,7 +43,7 @@ var Service = function(options) {
 
 util.inherits(Service, EventEmitter);
 
-Service.dependencies = ['insight-api-polis'];
+Service.dependencies = ['insight-api-dash'];
 
 /**
  * This method will read `key` and `cert` files from disk based on `httpsOptions` and
@@ -81,15 +81,23 @@ Service.prototype._getConfiguration = function() {
   var providerOptions = {
     provider: 'insight',
     url: (self.node.https ? 'https://' : 'http://') + 'localhost:' + self.node.port,
-    apiPrefix: '/api'
+    apiPrefix: '/insight-api'
   };
 
   // A bitcore-node is either livenet or testnet, so we'll pass
   // the configuration options to communicate via the local running
   // instance of the insight-api service.
-baseConfig.blockchainExplorerOpts = {
+  if (self.node.network === Networks.livenet) {
+    baseConfig.blockchainExplorerOpts = {
       livenet: providerOptions
-    }; 
+    };
+  } else if (self.node.network === Networks.testnet) {
+    baseConfig.blockchainExplorerOpts = {
+      testnet: providerOptions
+    };
+  } else {
+    throw new Error('Unknown network');
+  }
 
   return baseConfig;
 

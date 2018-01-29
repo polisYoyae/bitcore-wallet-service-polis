@@ -10,12 +10,11 @@ var log = require('npmlog');
 log.debug = log.verbose;
 log.level = 'info';
 
-var Bitcore = require('bitcore-lib-polis');
+var Bitcore = require('bitcore-lib-dash');
 var Bitcore_ = {
   btc: Bitcore,
+  bch: require('bitcore-lib-cash')
 };
-
-
 
 var Common = require('../../lib/common');
 var Utils = Common.Utils;
@@ -937,7 +936,7 @@ describe('Wallet service', function() {
         helpers.stubUtxos(server, wallet, [1, 2], function() {
           var txOpts = {
             outputs: [{
-              toAddress: '18PzpUFkFZE8zKWUPvfykkTxmB9oMR8qP7',
+              toAddress: 'XqHSiRAXd3EmNUPCAqok6ch5XzVWqKg7VD',
               amount: 0.1e8,
             }],
             feePerKb: 100e2,
@@ -1001,7 +1000,7 @@ describe('Wallet service', function() {
             helpers.stubUtxos(server2, wallet2, [1, 2, 3], function() {
               var txOpts = {
                 outputs: [{
-                  toAddress: '18PzpUFkFZE8zKWUPvfykkTxmB9oMR8qP7',
+                  toAddress: 'XqHSiRAXd3EmNUPCAqok6ch5XzVWqKg7VD',
                   amount: 0.1e8,
                 }],
                 feePerKb: 100e2,
@@ -1126,7 +1125,7 @@ describe('Wallet service', function() {
       helpers.stubUtxos(server, wallet, [1, 2], function() {
         var txOpts = {
           outputs: [{
-            toAddress: '18PzpUFkFZE8zKWUPvfykkTxmB9oMR8qP7',
+            toAddress: 'XqHSiRAXd3EmNUPCAqok6ch5XzVWqKg7VD',
             amount: 0.8e8
           }],
           feePerKb: 100e2
@@ -1206,7 +1205,7 @@ describe('Wallet service', function() {
           should.exist(address);
           address.walletId.should.equal(wallet.id);
           address.network.should.equal('livenet');
-          address.address.should.equal('3BVJZ4CYzeTtawDtgwHvWV5jbvnXtYe97i');
+          address.address.should.equal('7cCwPFUiodZXahkqxYxRqs5PXUcugBpDZT');
           address.isChange.should.be.false;
           address.path.should.equal('m/2147483647/0/0');
           address.type.should.equal('P2SH');
@@ -1254,7 +1253,7 @@ describe('Wallet service', function() {
           should.exist(address);
           address.walletId.should.equal(wallet.id);
           address.network.should.equal('livenet');
-          address.address.should.equal('36q2G5FMGvJbPgAVEaiyAsFGmpkhPKwk2r');
+          address.address.should.equal('7XYf6GXX5uQEPShSWCPUWFEvhNb5Ez2JrE');
           address.isChange.should.be.false;
           address.coin.should.equal('btc');
           address.path.should.equal('m/0/0');
@@ -1392,7 +1391,7 @@ describe('Wallet service', function() {
           should.exist(address);
           address.walletId.should.equal(wallet.id);
           address.network.should.equal('livenet');
-          address.address.should.equal('1L3z9LPd861FWQhf3vDn89Fnc9dkdBo2CG');
+          address.address.should.equal('Xujpyb3X5oDqfMJEuoXzyfwaSVDSg3vFPm');
           address.isChange.should.be.false;
           address.path.should.equal('m/0/0');
           address.type.should.equal('P2PKH');
@@ -1445,7 +1444,7 @@ describe('Wallet service', function() {
               address.path.should.equal('m/0/2');
 
               helpers.stubAddressActivity([
-                '1GdXraZ1gtoVAvBh49D4hK9xLm6SKgesoE', // m/0/2
+                'XrKNgqCuec25KrnGv2XHYqqkB6g8KWTEsk', // m/0/2
               ]);
               server.createAddress({}, function(err, address) {
                 should.not.exist(err);
@@ -1716,7 +1715,7 @@ describe('Wallet service', function() {
       helpers.stubUtxos(server, wallet, [1, 1], function() {
         var txOpts = {
           outputs: [{
-            toAddress: '18PzpUFkFZE8zKWUPvfykkTxmB9oMR8qP7',
+            toAddress: 'XqHSiRAXd3EmNUPCAqok6ch5XzVWqKg7VD',
             amount: 1e8,
           }],
           feePerKb: 100e2,
@@ -1830,7 +1829,7 @@ describe('Wallet service', function() {
           getAuthServer(opts.copayerId, reqPrivKey, function(err, server2) {
             var txOpts = {
               outputs: [{
-                toAddress: '18PzpUFkFZE8zKWUPvfykkTxmB9oMR8qP7',
+                toAddress: 'XqHSiRAXd3EmNUPCAqok6ch5XzVWqKg7VD',
                 amount: 0.8e8
               }],
               feePerKb: 100e2
@@ -1878,7 +1877,7 @@ describe('Wallet service', function() {
           getAuthServer(opts.copayerId, reqPrivKey, function(err, server2) {
             var txOpts = {
               outputs: [{
-                toAddress: '18PzpUFkFZE8zKWUPvfykkTxmB9oMR8qP7',
+                toAddress: 'XqHSiRAXd3EmNUPCAqok6ch5XzVWqKg7VD',
                 amount: 0.8e8
               }],
               feePerKb: 100e2,
@@ -3058,7 +3057,7 @@ describe('Wallet service', function() {
           helpers.getAuthServer(result.copayerId, function(server, wallet) {
             var txOpts = {
               outputs: [{
-                toAddress: '18PzpUFkFZE8zKWUPvfykkTxmB9oMR8qP7',
+                toAddress: 'XqHSiRAXd3EmNUPCAqok6ch5XzVWqKg7VD',
                 amount: 0.8e8
               }],
               feePerKb: 100e2
@@ -3075,8 +3074,10 @@ describe('Wallet service', function() {
     });
   });
 
+  // XqHSiRAXd3EmNUPCAqok6ch5XzVWqKg7VD
+  // 18PzpUFkFZE8zKWUPvfykkTxmB9oMR8qP7
   var addrMap = {
-    btc: '18PzpUFkFZE8zKWUPvfykkTxmB9oMR8qP7',
+    btc: 'XqHSiRAXd3EmNUPCAqok6ch5XzVWqKg7VD',
     bch: 'CPrtPWbp8cCftTQu5fzuLG5zPJNDHMMf8X',
   }
 
@@ -3085,7 +3086,7 @@ describe('Wallet service', function() {
       bch: 'id44bch',
   };
 
-  _.each(['bch', 'btc'], function(coin) {
+  _.each(['bch','btc'], function(coin) {
   
     describe('#createTx ' + coin, function() {
       var addressStr, idKey;
@@ -3093,8 +3094,6 @@ describe('Wallet service', function() {
         addressStr = addrMap[coin];
         idKey = idKeyMap[coin];
       });
-
-
 
       describe('Tx proposal creation & publishing ' + coin, function() {
         var server, wallet;
@@ -3176,10 +3175,11 @@ describe('Wallet service', function() {
             });
           });
           it('should fail to create tx for address of different network', function(done) {
+            if (coin == 'bch') { var toAddress = 'myE38JHdxmQcTJGP1ZiX4BiGhDxMJDvLJD'; } else { var toAddress = 'yj3v6A6gQkiRbChbGwvahiFZ6EfpYxk9na' }
             helpers.stubUtxos(server, wallet, 1, function() {
               var txOpts = {
                 outputs: [{
-                  toAddress: 'myE38JHdxmQcTJGP1ZiX4BiGhDxMJDvLJD',
+                  toAddress: toAddress,
                   amount: 0.5e8
                 }],
                 feePerKb: 100e2,
@@ -3193,6 +3193,7 @@ describe('Wallet service', function() {
               });
             });
           });
+
           it('should fail to create tx for invalid amount', function(done) {
             var txOpts = {
               outputs: [{
@@ -3314,6 +3315,7 @@ describe('Wallet service', function() {
               });
             });
           });
+
           it('should return already created tx if same foreign ID is specified and tx still unpublished', function(done) {
             helpers.stubUtxos(server, wallet, 2, function() {
               var txOpts = {
@@ -4095,7 +4097,7 @@ describe('Wallet service', function() {
         clock = sinon.useFakeTimers(Date.now(), 'Date');
         var txOpts = {
           outputs: [{
-            toAddress: '18PzpUFkFZE8zKWUPvfykkTxmB9oMR8qP7',
+            toAddress: 'XqHSiRAXd3EmNUPCAqok6ch5XzVWqKg7VD',
             amount: 1e8,
           }],
           feePerKb: 100e2,
@@ -4182,7 +4184,7 @@ describe('Wallet service', function() {
         helpers.stubUtxos(server, wallet, [1.3, 'u2', 'u0.1', 1.2], function(utxos) {
           var txOpts = {
             outputs: [{
-              toAddress: '18PzpUFkFZE8zKWUPvfykkTxmB9oMR8qP7',
+              toAddress: 'XqHSiRAXd3EmNUPCAqok6ch5XzVWqKg7VD',
               amount: 3e8
             }],
             feePerKb: 100e2,
@@ -4206,7 +4208,7 @@ describe('Wallet service', function() {
         helpers.stubUtxos(server, wallet, [1.3, 'u2', 'u0.1', 1.2], function(utxos) {
           var txOpts = {
             outputs: [{
-              toAddress: '18PzpUFkFZE8zKWUPvfykkTxmB9oMR8qP7',
+              toAddress: 'XqHSiRAXd3EmNUPCAqok6ch5XzVWqKg7VD',
               amount: 1.4e8
             }],
             feePerKb: 100e2,
@@ -4233,7 +4235,7 @@ describe('Wallet service', function() {
         helpers.stubUtxos(server, wallet, [1, 2, 3], function(utxos) {
           var txOpts = {
             outputs: [{
-              toAddress: '18PzpUFkFZE8zKWUPvfykkTxmB9oMR8qP7',
+              toAddress: 'XqHSiRAXd3EmNUPCAqok6ch5XzVWqKg7VD',
               amount: 3.5e8,
             }],
             feePerKb: 100e2,
@@ -4256,7 +4258,7 @@ describe('Wallet service', function() {
         helpers.stubUtxos(server, wallet, [1, '350bit', '100bit', '100bit', '100bit'], function() {
           var txOpts = {
             outputs: [{
-              toAddress: '18PzpUFkFZE8zKWUPvfykkTxmB9oMR8qP7',
+              toAddress: 'XqHSiRAXd3EmNUPCAqok6ch5XzVWqKg7VD',
               amount: 200e2,
             }],
             feePerKb: 10e2,
@@ -4276,7 +4278,7 @@ describe('Wallet service', function() {
         helpers.stubUtxos(server, wallet, _.range(1, 31), function(utxos) {
           var txOpts = {
             outputs: [{
-              toAddress: '18PzpUFkFZE8zKWUPvfykkTxmB9oMR8qP7',
+              toAddress: 'XqHSiRAXd3EmNUPCAqok6ch5XzVWqKg7VD',
               amount: _.sum(utxos, 'satoshis') - 0.5e8,
             }],
             feePerKb: 100e2,
@@ -4298,7 +4300,7 @@ describe('Wallet service', function() {
         helpers.stubUtxos(server, wallet, [1, 'u 350bit', '100bit', '100bit', '100bit'], function() {
           var txOpts = {
             outputs: [{
-              toAddress: '18PzpUFkFZE8zKWUPvfykkTxmB9oMR8qP7',
+              toAddress: 'XqHSiRAXd3EmNUPCAqok6ch5XzVWqKg7VD',
               amount: 200e2,
             }],
             feePerKb: 10e2,
@@ -4317,7 +4319,7 @@ describe('Wallet service', function() {
         helpers.stubUtxos(server, wallet, [1, '800bit', '800bit', '800bit'], function() {
           var txOpts = {
             outputs: [{
-              toAddress: '18PzpUFkFZE8zKWUPvfykkTxmB9oMR8qP7',
+              toAddress: 'XqHSiRAXd3EmNUPCAqok6ch5XzVWqKg7VD',
               amount: 2000e2,
             }],
             feePerKb: 10e2,
@@ -4337,7 +4339,7 @@ describe('Wallet service', function() {
         helpers.stubUtxos(server, wallet, [3, 1, 2, '100bit', '100bit', '100bit'], function() {
           var txOpts = {
             outputs: [{
-              toAddress: '18PzpUFkFZE8zKWUPvfykkTxmB9oMR8qP7',
+              toAddress: 'XqHSiRAXd3EmNUPCAqok6ch5XzVWqKg7VD',
               amount: 300e2,
             }],
             feePerKb: 10e2,
@@ -4359,7 +4361,7 @@ describe('Wallet service', function() {
         helpers.stubUtxos(server, wallet, [1, '605bit', '100bit', '100bit', '100bit'], function() {
           var txOpts = {
             outputs: [{
-              toAddress: '18PzpUFkFZE8zKWUPvfykkTxmB9oMR8qP7',
+              toAddress: 'XqHSiRAXd3EmNUPCAqok6ch5XzVWqKg7VD',
               amount: 300e2,
             }],
             feePerKb: 1200e2,
@@ -4380,7 +4382,7 @@ describe('Wallet service', function() {
         })), function() {
           var txOpts = {
             outputs: [{
-              toAddress: '18PzpUFkFZE8zKWUPvfykkTxmB9oMR8qP7',
+              toAddress: 'XqHSiRAXd3EmNUPCAqok6ch5XzVWqKg7VD',
               amount: 12000e2,
             }],
             feePerKb: 20e2,
@@ -4399,7 +4401,7 @@ describe('Wallet service', function() {
         helpers.stubUtxos(server, wallet, [9, 1, 1, 0.5, 0.2, 0.2, 0.2], function() {
           var txOpts = {
             outputs: [{
-              toAddress: '18PzpUFkFZE8zKWUPvfykkTxmB9oMR8qP7',
+              toAddress: 'XqHSiRAXd3EmNUPCAqok6ch5XzVWqKg7VD',
               amount: 3e8,
             }],
             feePerKb: 10e2,
@@ -4422,7 +4424,7 @@ describe('Wallet service', function() {
         helpers.stubUtxos(server, wallet, [100].concat(_.range(1, 20, 0)), function() {
           var txOpts = {
             outputs: [{
-              toAddress: '18PzpUFkFZE8zKWUPvfykkTxmB9oMR8qP7',
+              toAddress: 'XqHSiRAXd3EmNUPCAqok6ch5XzVWqKg7VD',
               amount: 15e8,
             }],
             feePerKb: 120e2,
@@ -4442,7 +4444,7 @@ describe('Wallet service', function() {
         helpers.stubUtxos(server, wallet, ['100bit', '100bit', '100bit'], function() {
           var txOpts = {
             outputs: [{
-              toAddress: '18PzpUFkFZE8zKWUPvfykkTxmB9oMR8qP7',
+              toAddress: 'XqHSiRAXd3EmNUPCAqok6ch5XzVWqKg7VD',
               amount: 200e2,
             }],
             feePerKb: 80e2,
@@ -4464,7 +4466,7 @@ describe('Wallet service', function() {
         helpers.stubUtxos(server, wallet, ['100bit', '100bit', '100bit'], function() {
           var txOpts = {
             outputs: [{
-              toAddress: '18PzpUFkFZE8zKWUPvfykkTxmB9oMR8qP7',
+              toAddress: 'XqHSiRAXd3EmNUPCAqok6ch5XzVWqKg7VD',
               amount: 400e2,
             }],
             feePerKb: 10e2,
@@ -4481,7 +4483,7 @@ describe('Wallet service', function() {
         helpers.stubUtxos(server, wallet, ['100bit', '100bit', '100bit'], function() {
           var txOpts = {
             outputs: [{
-              toAddress: '18PzpUFkFZE8zKWUPvfykkTxmB9oMR8qP7',
+              toAddress: 'XqHSiRAXd3EmNUPCAqok6ch5XzVWqKg7VD',
               amount: 299e2,
             }],
             feePerKb: 10e2,
@@ -4500,7 +4502,7 @@ describe('Wallet service', function() {
         })), function() {
           var txOpts = {
             outputs: [{
-              toAddress: '18PzpUFkFZE8zKWUPvfykkTxmB9oMR8qP7',
+              toAddress: 'XqHSiRAXd3EmNUPCAqok6ch5XzVWqKg7VD',
               amount: 1500e2,
             }],
             feePerKb: 10e2,
@@ -4519,7 +4521,7 @@ describe('Wallet service', function() {
         helpers.stubUtxos(server, wallet, ['u 1btc', '0.5btc'], function() {
           var txOpts = {
             outputs: [{
-              toAddress: '18PzpUFkFZE8zKWUPvfykkTxmB9oMR8qP7',
+              toAddress: 'XqHSiRAXd3EmNUPCAqok6ch5XzVWqKg7VD',
               amount: 0.8e8,
             }],
             feePerKb: 100e2,
@@ -4539,7 +4541,7 @@ describe('Wallet service', function() {
         })), function() {
           var txOpts = {
             outputs: [{
-              toAddress: '18PzpUFkFZE8zKWUPvfykkTxmB9oMR8qP7',
+              toAddress: 'XqHSiRAXd3EmNUPCAqok6ch5XzVWqKg7VD',
               amount: 200e2,
             }],
             feePerKb: 90e2,
@@ -4558,7 +4560,7 @@ describe('Wallet service', function() {
         })), function() {
           var txOpts = {
             outputs: [{
-              toAddress: '18PzpUFkFZE8zKWUPvfykkTxmB9oMR8qP7',
+              toAddress: 'XqHSiRAXd3EmNUPCAqok6ch5XzVWqKg7VD',
               amount: 200e2,
             }],
             feePerKb: 10e2,
@@ -4575,7 +4577,7 @@ describe('Wallet service', function() {
         helpers.stubUtxos(server, wallet, ['200bit', '500sat'], function() {
           var txOpts = {
             outputs: [{
-              toAddress: '18PzpUFkFZE8zKWUPvfykkTxmB9oMR8qP7',
+              toAddress: 'XqHSiRAXd3EmNUPCAqok6ch5XzVWqKg7VD',
               amount: 150e2,
             }],
             feePerKb: 100e2,
@@ -4596,7 +4598,7 @@ describe('Wallet service', function() {
         })), function() {
           var txOpts = {
             outputs: [{
-              toAddress: '18PzpUFkFZE8zKWUPvfykkTxmB9oMR8qP7',
+              toAddress: 'XqHSiRAXd3EmNUPCAqok6ch5XzVWqKg7VD',
               amount: 200e2,
             }],
             feePerKb: 80e2,
@@ -4612,7 +4614,7 @@ describe('Wallet service', function() {
         helpers.stubUtxos(server, wallet, [80, '50bit', '50bit', '50bit', '50bit', '50bit'], function() {
           var txOpts = {
             outputs: [{
-              toAddress: '18PzpUFkFZE8zKWUPvfykkTxmB9oMR8qP7',
+              toAddress: 'XqHSiRAXd3EmNUPCAqok6ch5XzVWqKg7VD',
               amount: 101e2,
             }],
             feePerKb: 100e2,
@@ -4628,7 +4630,7 @@ describe('Wallet service', function() {
         helpers.stubUtxos(server, wallet, [1, 1], function() {
           var txOpts = {
             outputs: [{
-              toAddress: '18PzpUFkFZE8zKWUPvfykkTxmB9oMR8qP7',
+              toAddress: 'XqHSiRAXd3EmNUPCAqok6ch5XzVWqKg7VD',
               amount: 1.5e8,
             }],
             feePerKb: 100e2,
@@ -4739,7 +4741,7 @@ describe('Wallet service', function() {
       helpers.stubUtxos(server, wallet, 2, function() {
         var txOpts = {
           outputs: [{
-            toAddress: '18PzpUFkFZE8zKWUPvfykkTxmB9oMR8qP7',
+            toAddress: 'XqHSiRAXd3EmNUPCAqok6ch5XzVWqKg7VD',
             amount: 1e8,
           }],
           message: 'some message',
@@ -5007,7 +5009,7 @@ describe('Wallet service', function() {
     });
     it('should reuse address as change address on tx proposal creation', function(done) {
       helpers.stubUtxos(server, wallet, 2, function() {
-        var toAddress = '18PzpUFkFZE8zKWUPvfykkTxmB9oMR8qP7';
+        var toAddress = 'XqHSiRAXd3EmNUPCAqok6ch5XzVWqKg7VD';
         var opts = {
           outputs: [{
             amount: 1e8,
@@ -5028,7 +5030,7 @@ describe('Wallet service', function() {
 
     it('should not duplicate address on storage after TX creation', function(done) {
       helpers.stubUtxos(server, wallet, 2, function() {
-        var toAddress = '18PzpUFkFZE8zKWUPvfykkTxmB9oMR8qP7';
+        var toAddress = 'XqHSiRAXd3EmNUPCAqok6ch5XzVWqKg7VD';
         var opts = {
           outputs: [{
             amount: 1e8,
@@ -5047,13 +5049,9 @@ describe('Wallet service', function() {
       });
     });
 
-
-
-
-
     it('should not be able to specify custom changeAddress', function(done) {
       helpers.stubUtxos(server, wallet, 2, function() {
-        var toAddress = '18PzpUFkFZE8zKWUPvfykkTxmB9oMR8qP7';
+        var toAddress = 'XqHSiRAXd3EmNUPCAqok6ch5XzVWqKg7VD';
         var opts = {
           outputs: [{
             amount: 1e8,
@@ -5123,7 +5121,7 @@ describe('Wallet service', function() {
     function sendTx(info, cb) {
       var txOpts = {
         outputs: [{
-          toAddress: '18PzpUFkFZE8zKWUPvfykkTxmB9oMR8qP7',
+          toAddress: 'XqHSiRAXd3EmNUPCAqok6ch5XzVWqKg7VD',
           amount: info.amount,
         }],
         inputs: info.inputs,
@@ -5298,7 +5296,7 @@ describe('Wallet service', function() {
       helpers.stubUtxos(server, wallet, ['u0.1', 0.1, 0.1, 0.1], function() {
         var txOpts = {
           outputs: [{
-            toAddress: '18PzpUFkFZE8zKWUPvfykkTxmB9oMR8qP7',
+            toAddress: 'XqHSiRAXd3EmNUPCAqok6ch5XzVWqKg7VD',
             amount: 0.09e8,
           }],
           feePerKb: 100e2,
@@ -5401,7 +5399,7 @@ describe('Wallet service', function() {
         helpers.stubUtxos(server, wallet, _.range(1, 9), function() {
           var txOpts = {
             outputs: [{
-              toAddress: '18PzpUFkFZE8zKWUPvfykkTxmB9oMR8qP7',
+              toAddress: 'XqHSiRAXd3EmNUPCAqok6ch5XzVWqKg7VD',
               amount: 10e8,
             }],
             feePerKb: 100e2,
@@ -5496,7 +5494,7 @@ describe('Wallet service', function() {
           helpers.stubUtxos(server, wallet, [1, 2], function() {
             var txOpts = {
               outputs: [{
-                toAddress: '18PzpUFkFZE8zKWUPvfykkTxmB9oMR8qP7',
+                toAddress: 'XqHSiRAXd3EmNUPCAqok6ch5XzVWqKg7VD',
                 amount: 2.5e8,
               }],
               feePerKb: 100e2,
@@ -5550,7 +5548,7 @@ describe('Wallet service', function() {
           helpers.stubUtxos(server, wallet, _.range(1, 9), function() {
             var txOpts = {
               outputs: [{
-                toAddress: '18PzpUFkFZE8zKWUPvfykkTxmB9oMR8qP7',
+                toAddress: 'XqHSiRAXd3EmNUPCAqok6ch5XzVWqKg7VD',
                 amount: 20e8,
               }],
               feePerKb: 100e2,
@@ -5761,7 +5759,7 @@ describe('Wallet service', function() {
         helpers.stubUtxos(server, wallet, [10, 10], function() {
           var txOpts = {
             outputs: [{
-              toAddress: '18PzpUFkFZE8zKWUPvfykkTxmB9oMR8qP7',
+              toAddress: 'XqHSiRAXd3EmNUPCAqok6ch5XzVWqKg7VD',
               amount: 9e8,
             }],
             message: 'some message',
@@ -5852,7 +5850,7 @@ describe('Wallet service', function() {
       helpers.stubBroadcast();
       var txOpts = {
         outputs: [{
-          toAddress: '18PzpUFkFZE8zKWUPvfykkTxmB9oMR8qP7',
+          toAddress: 'XqHSiRAXd3EmNUPCAqok6ch5XzVWqKg7VD',
           amount: 9e8,
         }],
         feePerKb: 100e2,
@@ -5878,7 +5876,7 @@ describe('Wallet service', function() {
       helpers.stubBroadcast();
       var txOpts = {
         outputs: [{
-          toAddress: '18PzpUFkFZE8zKWUPvfykkTxmB9oMR8qP7',
+          toAddress: 'XqHSiRAXd3EmNUPCAqok6ch5XzVWqKg7VD',
           amount: 9e8,
         }],
         feePerKb: 100e2,
@@ -5972,7 +5970,7 @@ describe('Wallet service', function() {
     it('other copayers should see pending proposal created by one copayer', function(done) {
       var txOpts = {
         outputs: [{
-          toAddress: '18PzpUFkFZE8zKWUPvfykkTxmB9oMR8qP7',
+          toAddress: 'XqHSiRAXd3EmNUPCAqok6ch5XzVWqKg7VD',
           amount: 10e8
         }],
         feePerKb: 100e2,
@@ -5998,7 +5996,7 @@ describe('Wallet service', function() {
         function(next) {
           var txOpts = {
             outputs: [{
-              toAddress: '18PzpUFkFZE8zKWUPvfykkTxmB9oMR8qP7',
+              toAddress: 'XqHSiRAXd3EmNUPCAqok6ch5XzVWqKg7VD',
               amount: 10e8
             }],
             feePerKb: 100e2,
@@ -6091,7 +6089,7 @@ describe('Wallet service', function() {
         function(next) {
           var txOpts = {
             outputs: [{
-              toAddress: '18PzpUFkFZE8zKWUPvfykkTxmB9oMR8qP7',
+              toAddress: 'XqHSiRAXd3EmNUPCAqok6ch5XzVWqKg7VD',
               amount: 10e8
             }],
             feePerKb: 100e2,
@@ -6179,7 +6177,7 @@ describe('Wallet service', function() {
         helpers.stubUtxos(server, wallet, 1, function() {
           var txOpts = {
             outputs: [{
-              toAddress: '18PzpUFkFZE8zKWUPvfykkTxmB9oMR8qP7',
+              toAddress: 'XqHSiRAXd3EmNUPCAqok6ch5XzVWqKg7VD',
               amount: 0.5e8
             }],
             feePerKb: 100e2,
@@ -6243,7 +6241,7 @@ describe('Wallet service', function() {
         helpers.stubUtxos(server, wallet, _.range(1, 11), function() {
           var txOpts = {
             outputs: [{
-              toAddress: '18PzpUFkFZE8zKWUPvfykkTxmB9oMR8qP7',
+              toAddress: 'XqHSiRAXd3EmNUPCAqok6ch5XzVWqKg7VD',
               amount: 0.1e8
             }],
             feePerKb: 100e2,
@@ -6330,7 +6328,7 @@ describe('Wallet service', function() {
         helpers.stubUtxos(server, wallet, _.range(4), function() {
           var txOpts = {
             outputs: [{
-              toAddress: '18PzpUFkFZE8zKWUPvfykkTxmB9oMR8qP7',
+              toAddress: 'XqHSiRAXd3EmNUPCAqok6ch5XzVWqKg7VD',
               amount: 0.1e8
             }],
             feePerKb: 100e2,
@@ -6562,7 +6560,7 @@ describe('Wallet service', function() {
         helpers.stubUtxos(server, wallet, [1, 2], function() {
           var txOpts = {
             outputs: [{
-              toAddress: '18PzpUFkFZE8zKWUPvfykkTxmB9oMR8qP7',
+              toAddress: 'XqHSiRAXd3EmNUPCAqok6ch5XzVWqKg7VD',
               amount: 0.8e8
             }],
             feePerKb: 100e2,
@@ -6878,7 +6876,7 @@ describe('Wallet service', function() {
     });
     it('should get tx history with accepted proposal', function(done) {
       server._normalizeTxHistory = sinon.stub().returnsArg(0);
-      var external = '18PzpUFkFZE8zKWUPvfykkTxmB9oMR8qP7';
+      var external = 'XqHSiRAXd3EmNUPCAqok6ch5XzVWqKg7VD';
 
       helpers.stubUtxos(server, wallet, [1, 2], function(utxos) {
         var txOpts = {
@@ -7483,6 +7481,7 @@ describe('Wallet service', function() {
       });
 
       it('from 0 to 200, two times, in order', function(done) {
+        this.timeout(5000); // extend default timeout from 2000ms to 5000ms
         async.eachSeries(_.range(0, 200, 5), function(i, next) {
           server.getTxHistory({
             skip: i,
@@ -7515,6 +7514,7 @@ describe('Wallet service', function() {
       });
 
       it('from 0 to 200, two times, random', function(done) {
+        this.timeout(5000); // extend default timeout from 2000ms to 5000ms
         var indexes = _.range(0, 200, 5);
         async.eachSeries(_.shuffle(indexes), function(i, next) {
           server.getTxHistory({
@@ -7549,6 +7549,7 @@ describe('Wallet service', function() {
 
 
       it('from 0 to 200, two times, random, with resets', function(done) {
+        this.timeout(5000); // extend default timeout from 2000ms to 5000ms
         var indexes = _.range(0, 200, 5);
         async.eachSeries(_.shuffle(indexes), function(i, next) {
           server.getTxHistory({
@@ -7616,9 +7617,9 @@ describe('Wallet service', function() {
 
       it('should scan main addresses', function(done) {
         helpers.stubAddressActivity(
-          ['1L3z9LPd861FWQhf3vDn89Fnc9dkdBo2CG', // m/0/0
-            '1GdXraZ1gtoVAvBh49D4hK9xLm6SKgesoE', // m/0/2
-            '1FUzgKcyPJsYwDLUEVJYeE2N3KVaoxTjGS', // m/1/0
+          ['Xujpyb3X5oDqfMJEuoXzyfwaSVDSg3vFPm', // m/0/0
+            'XrKNgqCuec25KrnGv2XHYqqkB6g8KWTEsk', // m/0/2
+            'XqAqWaGsM26969w46NcmVki9sf5GsumA41', // m/1/0
           ]);
         var expectedPaths = [
           'm/0/0',
@@ -7648,9 +7649,9 @@ describe('Wallet service', function() {
 
       it('should not go beyond max gap', function(done) {
         helpers.stubAddressActivity(
-          ['1L3z9LPd861FWQhf3vDn89Fnc9dkdBo2CG', // m/0/0
-            '1GdXraZ1gtoVAvBh49D4hK9xLm6SKgesoE', // m/0/2
-            '1DY9exavapgnCUWDnSTJe1BPzXcpgwAQC4', // m/0/5
+          ['Xujpyb3X5oDqfMJEuoXzyfwaSVDSg3vFPm', // m/0/0
+            'XrKNgqCuec25KrnGv2XHYqqkB6g8KWTEsk', // m/0/2
+            'XoDzVDEpYXuNMR6oeKmXVXsBpsCWo8Hcgo', // m/0/5
             '1LD7Cr68LvBPTUeXrr6YXfGrogR7TVj3WQ', // m/1/3
           ]);
         var expectedPaths = [
@@ -7808,9 +7809,9 @@ describe('Wallet service', function() {
 
       it('should scan main addresses', function(done) {
         helpers.stubAddressActivity(
-          ['39AA1Y2VvPJhV3RFbc7cKbUax1WgkPwweR', // m/2147483647/0/0
-            '3QX2MNSijnhCALBmUVnDo5UGPj3SEGASWx', // m/2147483647/0/2
-            '3MzGaz4KKX66w8ShKaR536ZqzVvREBqqYu', // m/2147483647/1/0
+          ['7ZsnqjJfjNQLUoxCsDn7eyUEsZM4cyDBJR', // m/2147483647/0/0
+            '7qEfBZitYmnqA6iik7Sj8TTvKGsp1NQ2yK', // m/2147483647/0/2
+            '7nhuRBLV8WBjvtyebC5aNUZVv3ko165rxE', // m/2147483647/1/0
           ]);
         var expectedPaths = [
           'm/2147483647/0/0',
@@ -7839,11 +7840,11 @@ describe('Wallet service', function() {
       });
       it('should scan main addresses & copayer addresses', function(done) {
         helpers.stubAddressActivity(
-          ['39AA1Y2VvPJhV3RFbc7cKbUax1WgkPwweR', // m/2147483647/0/0
-            '3MzGaz4KKX66w8ShKaR536ZqzVvREBqqYu', // m/2147483647/1/0
-            '3BYoynejwBH9q4Jhr9m9P5YTnLTu57US6g', // m/0/0/1
-            '37Pb8c32hzm16tCZaVHj4Dtjva45L2a3A3', // m/1/1/0
-            '32TB2n283YsXdseMqUm9zHSRcfS5JxTWxx', // m/1/0/0
+          ['7ZsnqjJfjNQLUoxCsDn7eyUEsZM4cyDBJR', // m/2147483647/0/0
+            '7nhuRBLV8WBjvtyebC5aNUZVv3ko165rxE', // m/2147483647/1/0
+            '7cGSoyvukANnppqf7mReiTY7htJGr1FNPv', // m/0/0/1
+            '7Y7DxoKCWyre6ejWr6xEPbtPr7tT9Sfd2X', // m/1/1/0
+            '7TAoryJHrXyAdeBK76RfKfS5YDGTD2iseR', // m/1/0/0
           ]);
         var expectedPaths = [
           'm/2147483647/0/0',
@@ -7889,9 +7890,9 @@ describe('Wallet service', function() {
 
     it('should start an asynchronous scan', function(done) {
       helpers.stubAddressActivity(
-        ['3GvvHimEMk2GBZnPxTF89GHZL6QhZjUZVs', // m/2147483647/0/0
-          '37pd1jjTUiGBh8JL2hKLDgsyrhBoiz5vsi', // m/2147483647/0/2
-          '3C3tBn8Sr1wHTp2brMgYsj9ncB7R7paYuB', // m/2147483647/1/0
+        ['7heZ7v3QAj7uBLKME4udUeHDFeF5PP1ptK', // m/2147483647/0/0
+          '7YYFqw1dHhMpgtqHJJyqZ4sdnF2BUrBdxz', // m/2147483647/0/2
+          '7cmX1yQcf12vTaZZ7yM4D79SXiwnvFU3W5', // m/2147483647/1/0
         ]);
       var expectedPaths = [
         'm/2147483647/0/0',
@@ -8000,7 +8001,7 @@ describe('Wallet service', function() {
       helpers.stubUtxos(server, wallet, [1, 2], function() {
         var txOpts = {
           outputs: [{
-            toAddress: '18PzpUFkFZE8zKWUPvfykkTxmB9oMR8qP7',
+            toAddress: 'XqHSiRAXd3EmNUPCAqok6ch5XzVWqKg7VD',
             amount: 0.8e8
           }],
           feePerKb: 100e2,
@@ -8278,7 +8279,7 @@ describe('Wallet service', function() {
         helpers.stubBroadcast();
         var txOpts = {
           outputs: [{
-            toAddress: '18PzpUFkFZE8zKWUPvfykkTxmB9oMR8qP7',
+            toAddress: 'XqHSiRAXd3EmNUPCAqok6ch5XzVWqKg7VD',
             amount: 1000e2
           }],
           feePerKb: 100e2,
@@ -8368,7 +8369,7 @@ describe('Wallet service', function() {
         address.walletId.should.equal(wallet.btc.id);
         address.coin.should.equal('btc');
         address.network.should.equal('livenet');
-        address.address.should.equal('1L3z9LPd861FWQhf3vDn89Fnc9dkdBo2CG');
+        address.address.should.equal('Xujpyb3X5oDqfMJEuoXzyfwaSVDSg3vFPm');
         server.bch.createAddress({}, function(err, address) {
           should.not.exist(err);
           should.exist(address);
@@ -8381,7 +8382,7 @@ describe('Wallet service', function() {
             addresses.length.should.equal(1);
             addresses[0].coin.should.equal('btc');
             addresses[0].walletId.should.equal(wallet.btc.id);
-            addresses[0].address.should.equal('1L3z9LPd861FWQhf3vDn89Fnc9dkdBo2CG');
+            addresses[0].address.should.equal('Xujpyb3X5oDqfMJEuoXzyfwaSVDSg3vFPm');
             server.bch.getMainAddresses({}, function(err, addresses) {
               should.not.exist(err);
               addresses.length.should.equal(1);
