@@ -11,7 +11,7 @@ describe('Address', function() {
   describe('#create', function() {
     it('should create livenet address', function() {
       var x = Address.create({
-        address: 'XyeQcLRXz116nTgjhEE7cLS321C94DNtPv',
+        address: '3KxttbKQQPWmpsnXZ3rB4mgJTuLnVR7frg',
         coin: 'btc',
         walletId: '123',
         isChange: false,
@@ -23,7 +23,7 @@ describe('Address', function() {
     });
     it('should create testnet address', function() {
       var x = Address.create({
-        address: 'yjNjJx2J3tns2MESsyK4KKZj356fPEimMm',
+        address: 'mp5xaa4uBj16DJt1fuA3D9fejHuCzeb7hj',
         coin: 'btc',
         walletId: '123',
         isChange: false,
@@ -44,7 +44,7 @@ describe('Address', function() {
       }], 'm/0/0', 1, 'btc', 'livenet', false);
       should.exist(address);
       address.walletId.should.equal('wallet-id');
-      address.address.should.equal('7q5f2uj8RTxtuCVWaZBrhbPgaRdDzkgnzn');
+      address.address.should.equal('3QN2CiSxcUsFuRxZJwXMNDQ2esnr5RXTvw');
       address.network.should.equal('livenet');
       address.isChange.should.be.false;
       address.path.should.equal('m/0/0');
@@ -57,7 +57,7 @@ describe('Address', function() {
       }], 'm/0/0', 1, 'btc', 'livenet', false);
       should.exist(address);
       address.walletId.should.equal('wallet-id');
-      address.address.should.equal('7cFh9KuqgGxchHDycum2dLxXMDTJ9ganzL');
+      address.address.should.equal('3BY4K8dfsHryhWh2MJ6XHxxsRfcvPAyseH');
       address.network.should.equal('livenet');
       address.isChange.should.be.false;
       address.path.should.equal('m/0/0');
@@ -70,7 +70,7 @@ describe('Address', function() {
       }], 'm/1/2', 1, 'btc', 'livenet', true);
       should.exist(address);
       address.walletId.should.equal('wallet-id');
-      address.address.should.equal('XqknWxoSxUf36MAzMDqcvpAHgEyudx7kKf');
+      address.address.should.equal('1G4wgi9YzmSSwQaQVLXQ5HUVquQDgJf8oT');
       address.network.should.equal('livenet');
       address.isChange.should.be.true;
       address.path.should.equal('m/1/2');

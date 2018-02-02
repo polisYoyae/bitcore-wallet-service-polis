@@ -393,11 +393,7 @@ helpers.clientSign = function(txp, derivedXPrivKey) {
   var privs = [];
   var derived = {};
 
-  if (txp.coin == 'bch') {
-      var xpriv = new Bitcore_.bch.HDPrivateKey(derivedXPrivKey, txp.network);
-  } else {
-      var xpriv = new Bitcore.HDPrivateKey(derivedXPrivKey, txp.network);
-  }
+  var xpriv = new Bitcore.HDPrivateKey(derivedXPrivKey, txp.network);
 
   _.each(txp.inputs, function(i) {
     if (!derived[i.path]) {
