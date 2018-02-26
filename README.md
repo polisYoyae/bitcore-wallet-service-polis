@@ -1,9 +1,9 @@
 
-# bitcore-wallet-service
+# bitcore-wallet-service-polis
 
-[![NPM Package](https://img.shields.io/npm/v/bitcore-wallet-service.svg?style=flat-square)](https://www.npmjs.org/package/bitcore-wallet-service)
-[![Build Status](https://img.shields.io/travis/bitpay/bitcore-wallet-service.svg?branch=master&style=flat-square)](https://travis-ci.org/bitpay/bitcore-wallet-service)
-[![Coverage Status](https://coveralls.io/repos/bitpay/bitcore-wallet-service/badge.svg?branch=master)](https://coveralls.io/r/bitpay/bitcore-wallet-service?branch=master)
+[![NPM Package](https://img.shields.io/npm/v/bitcore-wallet-service-polis.svg?style=flat-square)](https://www.npmjs.org/package/bitcore-wallet-service-polis)
+[![Build Status](https://img.shields.io/travis/polispay/bitcore-wallet-service-polis.svg?branch=master&style=flat-square)](https://travis-ci.org/polispay/bitcore-wallet-service-polis)
+[![Coverage Status](https://coveralls.io/repos/polispay/bitcore-wallet-service-polis/badge.svg?branch=master)](https://coveralls.io/r/polispay/bitcore-wallet-service-polis?branch=master)
 
 A Multisig HD Bitcore Wallet Service.
 
@@ -21,8 +21,8 @@ More about BWS at https://blog.bitpay.com/announcing-the-bitcore-wallet-suite/
 
 # Getting Started
 ```
- git clone https://github.com/bitpay/bitcore-wallet-service.git
- cd bitcore-wallet-service && npm start
+ git clone https://github.com/polispay/bitcore-wallet-service-polis.git
+ cd bitcore-wallet-service-polis && npm start
 ```
 
 This will launch the BWS service (with default settings) at `http://localhost:3232/bws/api`.

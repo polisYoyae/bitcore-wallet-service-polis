@@ -6,7 +6,7 @@ var config = {
   // Uncomment to make BWS a forking server
   // cluster: true,
 
-  // Uncomment to set the number or process (will use the nr of availalbe CPUs by default)
+  // Uncomment to set the number or process (will use the # of available CPUs by default)
   // clusterInstances: 4,
 
   // https: true,
@@ -41,11 +41,13 @@ var config = {
     btc: {
       livenet: {
         provider: 'insight',
-        url: 'https://insight.bitpay.com:443',
+        url: 'https://insight.polispay.org:443',
+        apiPrefix:'/api'
       },
       testnet: {
         provider: 'insight',
-        url: 'https://test-insight.bitpay.com:443',
+        url: 'https://testnet-insight.polispay.org:443',
+        apiPrefix:'/api'
         // url: 'http://localhost:3001',
         // Multiple servers (in priority order)
         // url: ['http://a.b.c', 'https://test-insight.bitpay.com:443'],

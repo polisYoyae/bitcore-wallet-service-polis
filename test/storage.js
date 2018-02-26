@@ -155,7 +155,7 @@ describe('Storage', function() {
             coin: 'btc',
             network: 'livenet',
             outputs: [{
-              toAddress: '18PzpUFkFZE8zKWUPvfykkTxmB9oMR8qP7',
+              toAddress: 'XqHSiRAXd3EmNUPCAqok6ch5XzVWqKg7VD',
               amount: i + 100,
             }],
             feePerKb: 100e2,
