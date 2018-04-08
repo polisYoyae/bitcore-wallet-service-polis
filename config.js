@@ -38,32 +38,23 @@ var config = {
     },
   },
   blockchainExplorerOpts: {
-    btc: {
+    polis: {
       livenet: {
         provider: 'insight',
-        url: 'https://insight.polispay.org:443',
+        url: 'https://insight-polis.polispay.org',
         apiPrefix:'/api'
       },
       testnet: {
         provider: 'insight',
-        url: 'https://testnet-insight.polispay.org:443',
+        url: 'https://testnet-insight.polispay.org',
         apiPrefix:'/api'
-        // url: 'http://localhost:3001',
-        // Multiple servers (in priority order)
-        // url: ['http://a.b.c', 'https://test-insight.bitpay.com:443'],
       },
-    },
-    bch: {
-      livenet: {
-        provider: 'insight',
-        url: 'https://cashexplorer.bitcoin.com',
-      },
-    },
+    }
   },
   pushNotificationsOpts: {
     templatePath: './lib/templates',
     defaultLanguage: 'en',
-    defaultUnit: 'btc',
+    defaultUnit: 'polis',
     subjectPrefix: '',
     pushServerUrl: 'https://fcm.googleapis.com/fcm',
     authorizationKey: '',
@@ -81,7 +72,7 @@ var config = {
   //  from: 'wallet-service@bitcore.io',
   //  templatePath: './lib/templates',
   //  defaultLanguage: 'en',
-  //  defaultUnit: 'btc',
+  //  defaultUnit: 'polis',
   //  publicTxUrlTemplate: {
   //    livenet: 'https://insight.bitpay.com/tx/{{txid}}',
   //    testnet: 'https://test-insight.bitpay.com/tx/{{txid}}',
